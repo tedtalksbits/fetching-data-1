@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Fetching locally😅</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+    <body>
+
+        <header>
+            <div class="header-left">
+                <i class="fa fa-plane fa-2x" aria-hidden="true"></i>
+            </div>
+            <div class="header-middle">
+                <input type="text">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </div>
+            <div class="header-right">
+                <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
+                <button>Sign In</button>
+            </div>
+            <div class="hamburger">
+                <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+            </div>
+        </header>
+        
+        <div class="parent">
+            <div class="child">
+                <img src="woman.png" alt="">
+                <p>Sourced Image</p>
+                <button>See How</button>
+            </div>
+            <div class="child">
+                <img src="" alt="" id="arsenal">
+                <p>Fetched Image</p>
+                <button>See How</button>
+            </div>
+            <div class="child">
+                <img src="man.png" alt="">
+                <p>Sourced Image</p>
+                <button>See How</button>
+            </div>
+        </div>
+        <section>
+            <div class="wrapper">
+                <div class="text-box">
+                    <h1>Make It Happen</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit nesciunt doloremque molestiae ex nobis consectetur quas neque molestias voluptatum! Minima quisquam sit dolorum dignissimos eius. Omnis beatae sunt enim minima velit veritatis facilis nostrum, debitis recusandae magni! Consectetur officiis debitis nostrum voluptas illo! Doloremque explicabo culpa nostrum ipsam sunt facilis blanditiis eum ipsum porro.
+                    </p>
+                    <button class="section-button">See How</button>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+    <script>
+        fetch('girl.png')
+        .then(response =>{
+            console.log(response);
+            return response.blob();
+        })
+        .then(blob =>{
+            console.log(blob);
+            //URL.createObjectURL() to convert blob into url that can used as src
+            document.getElementById('arsenal').src = URL.createObjectURL(blob);
+            document.get
+            console.log(URL.createObjectURL(blob));
+        });
+    </script>
+    </body>
+</html>

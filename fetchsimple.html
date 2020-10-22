@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>fetching</h1>
+    <img src="" alt="" id="fetching">
+
+    <script>
+        fetch('google.jpg')
+        .then(response =>{
+            console.log(response);
+            return response.blob();
+        })
+        .then(blob =>{
+            console.log(blob);
+            console.log(URL.createObjectURL(blob));
+            document.getElementById('fetching').src = URL.createObjectURL(blob);
+        })
+    </script>
+</body>
+</html>
