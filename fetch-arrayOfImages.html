@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            font-family: 'Helvetica', sans-serif;
+            background:linear-gradient(90deg, #89f7fe 0%,#66a6ff 100% );
+        }
+        img{
+            margin-top: 50px;
+        }
+    </style>
+    <title>Fetching images in an array</title>
+</head>
+<body>
+    <h1>Load Images From An Array</h1>
+    <script>
+        const images = [
+            'images/instagram.png',
+            'images/facebook.png',
+            'images/reddit.png',
+            'images/twitter.png',
+            'images/youtube.png',
+        ];
+
+        catchImages(images)
+        .then(response =>{
+            console.log('success!');
+        })
+        .catch(error => {
+            console.log('error');
+            console.error(error);
+        });
+
+        async function catchImages(images){
+            for(let image of images){
+                const response = await fetch(image);
+                const blob = await response.blob();
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(blob);
+                img.width = '200';
+                img.style.padding = '10px';
+                document.body.append(img);
+            }
+        }
+    </script>
+</body>
+</html>
