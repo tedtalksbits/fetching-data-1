@@ -33,7 +33,7 @@
                 <button>See How</button>
             </div>
             <div class="child">
-                <img src="" alt="" id="arsenal">
+                <img src="" alt="" id="image">
                 <p>Fetched Image</p>
                 <button>See How</button>
             </div>
@@ -60,18 +60,38 @@
 
 
     <script>
-        fetch('girl.png')
-        .then(response =>{
-            console.log(response);
-            return response.blob();
+        // fetch('girl.png')
+        // .then(response =>{
+        //     console.log(response);
+        //     return response.blob();
+        // })
+        // .then(blob =>{
+        //     console.log(blob);
+        //     //URL.createObjectURL() to convert blob into url that can used as src
+        //     document.getElementById('image').src = URL.createObjectURL(blob);
+        //     document.get
+        //     console.log(URL.createObjectURL(blob));
+        // })
+        // .catch(error =>{
+        //     console.error(error);
+        // });
+
+        
+        //  using async and await
+        catchRainbow()
+        .then(response => {
+            console.log('found!');
         })
-        .then(blob =>{
-            console.log(blob);
-            //URL.createObjectURL() to convert blob into url that can used as src
-            document.getElementById('arsenal').src = URL.createObjectURL(blob);
-            document.get
-            console.log(URL.createObjectURL(blob));
+        .catch(error => {
+            console.log('error');
+            console.error(error);
         });
+
+        async function catchRainbow(){
+            const response = await fetch('girl.png');
+            const blob = await response.blob();
+            document.getElementById('image').src = URL.createObjectURL(blob);
+        }
     </script>
     </body>
 </html>
