@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetching a local text file</title>
+    <style>
+        p{
+            font-size: 2em;
+            text-align: center;
+            line-height: 1.4;
+        }
+        body{
+            background:linear-gradient(90deg, #7f00ff 0%,#e100ff 100% );
+            font-family: 'Helvetica', sans-serif;
+            color: white;
+            padding: 40px;
+        }
+        .card{
+            background: rgba(255, 255, 255, 0.26);
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+            max-width: 800px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <p id="poem"></p>
+    </div>
+
+    <script>
+
+        catchTxt()
+        .then(txt => {
+            document.getElementById('poem').innerText = txt;
+            console.log('found file!');
+        })
+        .catch(error =>{
+            console.log('error');
+            console.error(error);
+        });
+
+        async function catchTxt(){
+            const response = await fetch('poem.txt');
+            return await response.text();
+        }
+    </script>
+</body>
+</html>
